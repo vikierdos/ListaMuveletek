@@ -1,87 +1,32 @@
 import { emberekLISTA } from "./adat.js";
+import { megjelenit, tablazatLetrehoz } from "./fuggvenyek.js";
+    /*
+    jelenisuk meg az adatainkat egy tablazatban az adatk divben
+    az urlap div-ben legyen egy urlap, amivel ilyen adatokat tudunk a tablazatba beletenni
+    a tablazat fejlecere kattintva rendezzuk a tablazatot nev szerint
+    tudjunk torolni a tablazatbol egy sort
+    legyen szuromezo, ami segitsegevel nev szerint tudjuk szurni az adatokat 
+    
+    Fuggvenyek:
 
-listaKiir();
-listaKiir3();
+    1. tablazatLetrehoz(lista) -> txt
+        lista alapján készít html tablazat kodot, visszaadja az elkeszult html szoveget. minden sor mellett egy torles gombbal
+    2. megjelenit(txt)
+        megjeliniti a parameterben kapott szoveget egy adott html elemben
+    3. rendez(lista) -> rendezettLista
+        megrendezi a listat adott parameter szerint, a megrendezett listat ujra megjeleniti, megrendezett listat visszaadja
+        akkor fut le amikor rakattintunk a tablazat fejlecere
+    4. szures(lista, keresoSzoveg) -> szurtLista
+        akkor fog lefutni, ha a szuro mezoben valtozas tortenik (keyup) - a listaban a nev mezoben keres egyezeseket es szur ez alapjan
+        filter
+    5. sorBeszur(lista) -> ujLista
+        ha a submit gombra kattintunk akkor fut le
+        urlap adatkat atalakitjuk objektumma es hozzaadjuk a listahoz (push)
+    6. torol(lista, index)
+        torli a lista adott sorat
+        minden sor mellett lesz egy torol gomb, amivel megkapjuk az adott sor indexet es meghivodik a torol fuggveny
+    
+    */
 
-
-
-/* Függvény - működik a hoisting */
-function listaKiir(){
-    for (let index = 0; index < emberekLISTA.length; index++) {
-        const element =emberekLISTA[index];
-        console.log(element);
-        
-    }
-}
-
-
-/* Függvény kifejezés - ne működik a hoisting*/
-const listaKiir2 = function(){
-    for (let index = 0; index < emberekLISTA.length; index++) {
-        const element =emberekLISTA[index];
-        console.log(element);
-        
-    }
-}
-
-function listaKiir3(){
-    /* csak esetén alkalmazható */
-    emberekLISTA.forEach(
-        function(elem, index){
-            console.log(elem, index);
-        }
-    );
-}
-
-/* a 30 évnél idősebbeket írjuk ki */
-
-function idosebb30nal() {
-    const oregebbMint30 = emberekLISTA.filter(function(ember){
-        return ember.kor > 30;
-    })
-    console.log(oregebbMint30);
-}
-idosebb30nal();
-
-/* férfiak */
-
-function ferfiak(){
-    const ferfiakLISTA = emberekLISTA.filter(function(ember){
-        return ember.nem;
-    });
-    console.log(ferfiakLISTA);
-}
-
-ferfiak();
-
-
-/* 20 evnel idosebb ferfiak */
-
-function ferfiak20evfelett(){
-    const ferfiak20LISTA = emberekLISTA.filter(function(ember){
-        return ember.kor > 20 && ember.nem;
-    });
-    console.log(ferfiak20LISTA);
-}
-
-ferfiak20evfelett();
-
-
-/* rendezzuk kor szerint novekvo sorrendbe */
-
-function rendez(){
-    emberekLISTA.sort(function(e1, e2) {
-        return e1.kor - e2.kor;
-    });
-    console.log(emberekLISTA);
-}
-rendez();
-function veletlen(){
-    emberekLISTA.sort(function(e1, e2) {
-        /* véletlenszerűen */
-        return Math.random()-0.5;
-    });
-    console.log(emberekLISTA);
-}
-
-veletlen();
+    var txt = tablazatLetrehoz(emberekLISTA);
+    megjelenit(txt);
