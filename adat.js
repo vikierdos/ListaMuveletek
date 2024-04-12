@@ -20,12 +20,12 @@ export const emberekLISTA = [
         nem: true
     },
     {
-        nev: "Jancsi",
+        nev: "Ádám",
         kor: 66,
         nem: true
     },
     {
-        nev: "Kati",
+        nev: "Éva",
         kor: 27,
         nem: false
     },

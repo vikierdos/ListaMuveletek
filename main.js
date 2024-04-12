@@ -1,5 +1,6 @@
 import { emberekLISTA } from "./adat.js";
 import { megjelenit, tablazatLetrehoz } from "./fuggvenyek.js";
+import { rendez, szures } from "./adatKezelo.js";
     /*
     jelenisuk meg az adatainkat egy tablazatban az adatk divben
     az urlap div-ben legyen egy urlap, amivel ilyen adatokat tudunk a tablazatba beletenni
@@ -27,6 +28,38 @@ import { megjelenit, tablazatLetrehoz } from "./fuggvenyek.js";
         minden sor mellett lesz egy torol gomb, amivel megkapjuk az adott sor indexet es meghivodik a torol fuggveny
     
     */
+    let rIrany = 1;
+    init(emberekLISTA);
+    szuresNevSzerint();
 
-    var txt = tablazatLetrehoz(emberekLISTA);
-    megjelenit(txt);
+    function init(lista){
+        var txt = tablazatLetrehoz(lista);
+        megjelenit(txt);
+        rendezesEsemeny();
+    }
+
+    function szuresNevSzerint(){
+        const szuroElem = $("#sznev");
+        szuroElem.on("keyup", function(){
+            let szoveg = szuroElem.val();
+            init(szures(emberekLISTA, szoveg));
+        });
+    }
+
+    /* szorgalmi: egyéb mezőkre szűrés */
+
+
+    function rendezesEsemeny(){
+
+        /* ha rákattintunk a táblázat fejlécében lévő név mezőre */
+        const nevMezoElem = $(".adatok table th").eq(0);
+        nevMezoElem.on("click", function(){
+            const lista = rendez(emberekLISTA, "nev", rIrany);
+            console.log(lista);
+            init(lista);
+            rIrany*=-1;
+        })
+    }
+
+/* szorgalmi: tudjunk rendezni a tobbi mezore is */
+
