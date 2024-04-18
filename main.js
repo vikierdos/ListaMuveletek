@@ -1,6 +1,7 @@
 import { emberekLISTA } from "./adat.js";
 import { megjelenit, tablazatLetrehoz } from "./fuggvenyek.js";
-import { rendez, szures } from "./adatKezelo.js";
+import { rendez, szures, torol } from "./adatKezelo.js";
+import { sorBeszur } from "./urlapKezelo.js";
     /*
     jelenisuk meg az adatainkat egy tablazatban az adatk divben
     az urlap div-ben legyen egy urlap, amivel ilyen adatokat tudunk a tablazatba beletenni
@@ -31,11 +32,13 @@ import { rendez, szures } from "./adatKezelo.js";
     let rIrany = 1;
     init(emberekLISTA);
     szuresNevSzerint();
+    sorBeszur(emberekLISTA);
 
-    function init(lista){
+    export function init(lista){
         var txt = tablazatLetrehoz(lista);
         megjelenit(txt);
         rendezesEsemeny();
+        torolEsemeny();
     }
 
     function szuresNevSzerint(){
@@ -61,5 +64,14 @@ import { rendez, szures } from "./adatKezelo.js";
         })
     }
 
-/* szorgalmi: tudjunk rendezni a tobbi mezore is */
+    /* szorgalmi: tudjunk rendezni a tobbi mezore is */
 
+    function torolEsemeny(){
+        const torolELEM =$(".torol");
+        torolELEM.on("click", function(event){
+            let index = event.target.id;
+            /*              ^^az az elem,amelyik kivaltotta az esemenyt  */
+            const LISTA = torol(emberekLISTA, index);
+            init(LISTA);
+        });
+    }
