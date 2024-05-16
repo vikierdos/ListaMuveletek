@@ -1,0 +1,52 @@
+{
+    "emberekLISTA": [
+        {
+            "nev": "Jenő",
+            "kor": 23,
+            "nem": true,
+            "id": "1abc"
+        },
+        {
+            "nev": "Juli",
+            "kor": 33,
+            "nem": false,
+            "id": "2abc"
+        },
+        {
+            "nev": "Géza",
+            "kor": 13,
+            "nem": true,
+            "id": "3abc"
+        },
+        {
+            "nev": "Béla",
+            "kor": 45,
+            "nem": true,
+            "id": "4abc"
+        },
+        {
+            "nev": "Ádám",
+            "kor": 66,
+            "nem": true,
+            "id": "5abc"
+        },
+        {
+            "nev": "Éva",
+            "kor": 27,
+            "nem": false,
+            "id": "6abc"
+        },
+        {
+            "nev": "Noé",
+            "kor": 12,
+            "nem": true,
+            "id": "7abc"
+        }
+    ],
+    
+    "szallitasiAdatok": [
+        {
+            /* adatok */
+        }
+    ]
+}
