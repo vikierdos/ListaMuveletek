@@ -1,4 +1,5 @@
-import { init } from "./main.js";
+
+import { postAdat } from "./asszinkron.js";
 
     
     
@@ -15,8 +16,9 @@ import { init } from "./main.js";
             };
             console.log($(".valid-feedback").eq(0).css("display"))
             if($(".valid-feedback").eq(0).css("display") === "block" && $(".valid-feedback").eq(1).css("display") === "block"){
-                lista.push(adat);
-                init(lista)
+                /*lista.push(adat);
+                init(lista)*/
+                postAdat("http://localhost:3000/emberekLISTA", adat)
             }
         });
     }
